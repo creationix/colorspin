@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>ColorSpin</title>
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no"/>
+  <style>
+    html { height: 100%; }
+    body {
+      height: 100%;
+      margin: 0;
+      -webkit-transition: background-color 0.25s linear;
+      background-color: hsl(255,100%,50%);
+    }
+  </style>
+  <script>
+    window.addEventListener('load', function () {
+      var body = document.querySelector('body');
+      function setHue(hue) {
+        body.style.backgroundColor="hsl(" + hue + ",100%,50%)";
+      }
+      if (typeof PalmSystem !== 'undefined') {
+        // on real device
+        PalmSystem.stageReady();
+        PalmSystem.enableFullScreenMode(true);
+        window.addEventListener('acceleration', function (evt) {
+          var hue = (evt.accelX * -180 + 900) % 360;
+          setHue(hue);
+        }, true);
+      } else {
+        // Running in desktop browser
+        setInterval(function () {
+          setHue(Math.random() * 360);
+        }, 500);
+      }
+    });
+  </script>
+</head>
+<body>
+</body>
+</html>

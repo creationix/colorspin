@@ -1,0 +1,9 @@
+{
+  "id": "com.creationix.colorspin",
+  "version": "1.0.0",
+  "vendor": "Tim Caswell",
+  "type": "web",
+  "main": "index.html",
+  "title": "ColorSpin",
+  "icon": "icon.png"
+}
